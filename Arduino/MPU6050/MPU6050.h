@@ -38,7 +38,11 @@ THE SOFTWARE.
 #define _MPU6050_H_
 
 #include "I2Cdev.h"
+#include "MPU6050_6Axis_MotionApps_V6_12.h"
 
+#ifndef BUFFER_LENGTH // FIX
+#define BUFFER_LENGTH 32
+#endif
 // supporting link:  http://forum.arduino.cc/index.php?&topic=143444.msg1079517#msg1079517
 // also: http://forum.arduino.cc/index.php?&topic=141571.msg1062899#msg1062899s
 
@@ -830,6 +834,7 @@ class MPU6050 {
 
 
         // special methods for MotionApps 2.0 implementation
+        // #define MPU6050_INCLUDE_DMP_MOTIONAPPS20
         #ifdef MPU6050_INCLUDE_DMP_MOTIONAPPS20
 
             uint8_t dmpInitialize();
