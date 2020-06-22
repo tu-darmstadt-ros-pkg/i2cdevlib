@@ -1,8 +1,8 @@
-#include <IMU_MPU6050.h>
+#include <ROS_MPU6050.h>
 // #include <MPU6050_6Axis_MotionApps_V6_12.h>
 
 
-int IMU_MPU6050::init(){
+int ROS_MPU6050::init(){
     initialize();
     setFullScaleAccelRange(MPU6050_ACCEL_FS_4);//Accel Range +-g
     setFullScaleGyroRange(MPU6050_GYRO_FS_500);//GYro Range +-deg/s
@@ -28,11 +28,11 @@ int IMU_MPU6050::init(){
   return 0;
 }
 
-uint8_t IMU_MPU6050::dmpUpdateCurrentFIFOPacket(){
+uint8_t ROS_MPU6050::dmpUpdateCurrentFIFOPacket(){
     return dmpGetCurrentFIFOPacket(fifoBuffer);
 }
 
-uint8_t IMU_MPU6050::updateAccelGyro(){
+uint8_t ROS_MPU6050::updateAccelGyro(){
     dmpGetQuaternion(&q, fifoBuffer);
     dmpGetGyro(&gy, fifoBuffer);
     dmpGetAccel(&aa, fifoBuffer);
@@ -41,7 +41,7 @@ uint8_t IMU_MPU6050::updateAccelGyro(){
     return 0;
 }
 
-uint8_t IMU_MPU6050::getSensorDataRaw(sensor_msgs::Imu &imu_msg, ros::NodeHandle *nh){
+uint8_t ROS_MPU6050::getSensorDataRaw(sensor_msgs::Imu &imu_msg, ros::NodeHandle *nh){
     if(dmpUpdateCurrentFIFOPacket()){
         updateAccelGyro();
         imu_msg.header.stamp = nh->now();

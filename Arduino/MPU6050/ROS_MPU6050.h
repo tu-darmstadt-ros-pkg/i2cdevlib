@@ -9,7 +9,7 @@
 #define DEG_TO_RAD 0.0174533
 #endif
 
-class IMU_MPU6050 : public MPU6050
+class ROS_MPU6050 : public MPU6050
 {
 private:
     // MPU6050 *mpu = new MPU6050;
