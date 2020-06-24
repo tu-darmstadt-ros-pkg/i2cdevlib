@@ -55,10 +55,12 @@ uint8_t ROS_MPU6050::getSensorDataRaw(sensor_msgs::Imu &imu_msg, ros::NodeHandle
         imu_msg.angular_velocity.x = gy.x*DEG_TO_RAD*500/0x3FFF;
         imu_msg.angular_velocity.y = gy.y*DEG_TO_RAD*500/0x3FFF;
         imu_msg.angular_velocity.z = gy.z*DEG_TO_RAD*500/0x3FFF;
+	newData = true;
         return 1;
     }
     else
     {
+	newData=false;
         return 0;
     }
     

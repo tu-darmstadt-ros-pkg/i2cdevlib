@@ -25,6 +25,7 @@ public:
     VectorInt16 gy;
     VectorInt16 aaReal;
     VectorFloat gravity;
+    bool newData = false;
 
     int init();
     uint8_t dmpUpdateCurrentFIFOPacket();
